@@ -46,7 +46,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     //icons
-    implementation(libs.compose.icons)
+    implementation(libs.compose.icons) //perbaikanv
     //Room
     implementation(libs.bundles.room)
     ksp(libs.room.compiler)
