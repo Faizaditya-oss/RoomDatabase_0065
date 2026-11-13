@@ -1,7 +1,7 @@
 package com.faiz.roomdatabase_0065.repositori
 
 import android.content.Context
-import com.example.roomdb.room.DatabaseSiswa
+import com.faiz.roomdatabase_0065.room.DatabaseSiswa
 
 interface ContainerApp {
     val repositoriSiswa : RepositoriSiswa
