@@ -1,8 +1,8 @@
-package com.example.roomdb
+package com.faiz.roomdatabase_0065
 
 import android.app.Application
-import com.example.roomdb.repositori.ContainerApp
-import com.example.roomdb.repositori.ContainerDataApp
+import com.faiz.roomdatabase_0065.repositori.ContainerApp
+import com.faiz.roomdatabase_0065.repositori.ContainerDataApp
 
 class AplikasiSiswa : Application() {
     /**
