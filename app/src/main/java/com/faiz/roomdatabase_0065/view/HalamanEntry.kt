@@ -15,7 +15,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -26,6 +25,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.faiz.roomdatabase_0065.R
 import com.faiz.roomdatabase_0065.uicontroller.DestinasiEntry
+import com.faiz.roomdatabase_0065.uicontroller.SiswaTopAppBar
 import com.faiz.roomdatabase_0065.viewmodel.DetailSiswa
 import com.faiz.roomdatabase_0065.viewmodel.EntryViewModel
 import com.faiz.roomdatabase_0065.viewmodel.PenyediaViewModel
@@ -48,7 +48,8 @@ fun EntrySiswaScreen(
             SiswaTopAppBar(
                 title = stringResource(DestinasiEntry.titleRes),
                 canNavigateBack = true,
-                scrollBehavior = scrollBehavior
+                scrollBehavior = scrollBehavior,
+                navigateUp = navigateBack
             )
         }
     ) { innerPadding ->
@@ -67,15 +68,6 @@ fun EntrySiswaScreen(
                 .fillMaxWidth()
         )
     }
-}
-
-@Composable
-fun SiswaTopAppBar(
-    title: String,
-    canNavigateBack: Boolean,
-    scrollBehavior: TopAppBarScrollBehavior
-) {
-    TODO("Not yet implemented")
 }
 
 @Composable
