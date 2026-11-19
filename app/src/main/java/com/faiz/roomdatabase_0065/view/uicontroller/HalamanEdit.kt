@@ -1,4 +1,4 @@
-package com.faiz.roomdatabase_0065.view
+package com.faiz.roomdatabase_0065.view.uicontroller
 
 
 import androidx.compose.foundation.layout.padding
@@ -9,9 +9,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.prak9.view.route.DestinasiEditSiswa
-import com.example.prak9.viewmodel.EditViewModel
-import com.example.prak9.viewmodel.provider.PenyediaViewModel
+import com.faiz.roomdatabase_0065.view.route.DestinasiEditSiswa
+import com.faiz.roomdatabase_0065.viewmodel.EditViewModel
+import com.faiz.roomdatabase_0065.viewmodel.provider.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -1,4 +1,4 @@
-package com.faiz.roomdatabase_0065.uicontroller
+package com.faiz.roomdatabase_0065.view.route
 
 import com.faiz.roomdatabase_0065.R
 

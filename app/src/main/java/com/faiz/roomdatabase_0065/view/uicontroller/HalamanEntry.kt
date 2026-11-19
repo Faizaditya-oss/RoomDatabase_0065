@@ -1,4 +1,4 @@
-package com.faiz.roomdatabase_0065.view
+package com.faiz.roomdatabase_0065.view.uicontroller
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,28 +8,25 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.faiz.roomdatabase_0065.R
-import com.faiz.roomdatabase_0065.uicontroller.DestinasiEntry
-import com.faiz.roomdatabase_0065.uicontroller.SiswaTopAppBar
-import com.faiz.roomdatabase_0065.viewmodel.DetailSiswa
+import com.faiz.roomdatabase_0065.view.route.DestinasiEntry
+import com.faiz.roomdatabase_0065.viewmodel.DetailsSiswa
 import com.faiz.roomdatabase_0065.viewmodel.EntryViewModel
-import com.faiz.roomdatabase_0065.viewmodel.PenyediaViewModel
 import com.faiz.roomdatabase_0065.viewmodel.UIStateSiswa
+import com.faiz.roomdatabase_0065.viewmodel.provider.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -40,18 +37,15 @@ fun EntrySiswaScreen(
     viewModel: EntryViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val coroutineScope = rememberCoroutineScope()
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
-
     Scaffold(
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SiswaTopAppBar(
                 title = stringResource(DestinasiEntry.titleRes),
                 canNavigateBack = true,
-                scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack
             )
-        }
+        },
+        modifier = modifier
     ) { innerPadding ->
         EntrySiswaBody(
             uiStateSiswa = viewModel.uiStateSiswa,
@@ -73,7 +67,7 @@ fun EntrySiswaScreen(
 @Composable
 fun EntrySiswaBody(
     uiStateSiswa: UIStateSiswa,
-    onSiswaValueChange: (DetailSiswa) -> Unit,
+    onSiswaValueChange: (DetailsSiswa) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -82,7 +76,7 @@ fun EntrySiswaBody(
         modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
     ) {
         FormInputSiswa(
-            detailSiswa = uiStateSiswa.detailSiswa,
+            detailsSiswa = uiStateSiswa.detailsSiswa,
             onValueChange = onSiswaValueChange,
             modifier = Modifier.fillMaxWidth()
         )
@@ -92,7 +86,7 @@ fun EntrySiswaBody(
             shape = MaterialTheme.shapes.small,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(stringResource(R.string.btn_submit))
+            Text(text = stringResource(R.string.btn_submit))
         }
     }
 }
@@ -100,9 +94,9 @@ fun EntrySiswaBody(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormInputSiswa(
-    detailSiswa: DetailSiswa,
+    detailsSiswa: DetailsSiswa,
     modifier: Modifier = Modifier,
-    onValueChange: (DetailSiswa) -> Unit = {},
+    onValueChange: (DetailsSiswa) -> Unit = {},
     enabled: Boolean = true
 ) {
     Column(
@@ -110,31 +104,30 @@ fun FormInputSiswa(
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
     ) {
         OutlinedTextField(
-            value = detailSiswa.nama,
-            onValueChange = { onValueChange(detailSiswa.copy(nama = it)) },
+            value = detailsSiswa.nama,
+            onValueChange = { onValueChange(detailsSiswa.copy(nama = it)) },
             label = { Text(stringResource(R.string.nama)) },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
         OutlinedTextField(
-            value = detailSiswa.alamat,
-            onValueChange = { onValueChange(detailSiswa.copy(alamat = it)) },
+            value = detailsSiswa.alamat,
+            onValueChange = { onValueChange(detailsSiswa.copy(alamat = it)) },
             label = { Text(stringResource(R.string.alamat)) },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
         OutlinedTextField(
-            value = detailSiswa.telpon,
-            onValueChange = { onValueChange(detailSiswa.copy(telpon = it)) },
+            value = detailsSiswa.telpon,
+            onValueChange = { onValueChange(detailsSiswa.copy(telpon = it)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            label = { Text(text = stringResource(R.string.telpon)) },
+            label = { Text(stringResource(R.string.telpon)) },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
-
         if (enabled) {
             Text(
                 text = stringResource(R.string.required_field),

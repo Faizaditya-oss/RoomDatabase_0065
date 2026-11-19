@@ -2,15 +2,15 @@ package com.faiz.roomdatabase_0065.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.faiz.roomdatabase_0065.room.Siswa
 import com.faiz.roomdatabase_0065.repositori.RepositoriSiswa
+import com.faiz.roomdatabase_0065.room.Siswa
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
-class HomeViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel() {
+class HomeViewModel(private val repositoriSiswa: RepositoriSiswa) : ViewModel() {
 
     companion object {
         private const val TIMEOUT_MILLIS = 5_000L
