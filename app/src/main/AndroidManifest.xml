@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Fix manifest namespace and uicontroller errors-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-<!--Running App-->
+<!--Running Application-->
     <application
         android:name=".viewmodel.AplikasiSiswa"
         android:allowBackup="true"
