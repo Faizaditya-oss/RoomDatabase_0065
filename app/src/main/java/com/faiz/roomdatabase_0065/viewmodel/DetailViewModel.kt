@@ -31,3 +31,8 @@ class DetailViewModel(
         private const val  TIMEOUT_MILLIS = 5_000L
     }
 }
+
+// UI State untuk ItemDetailsScreen
+data class  DetailSiswaUiState(
+    val detailSiswa: DetailSiswa = DetailSiswa()
+)
