@@ -20,6 +20,16 @@ import com.faiz.roomdatabase_0065.uicontroller.DestinasiEntry
 import com.faiz.roomdatabase_0065.uicontroller.DestinasiHome
 import com.faiz.roomdatabase_0065.view.EntrySiswaScreen
 import com.faiz.roomdatabase_0065.view.HomeScreen
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.faiz.roomdatabase_0065.view.route.DestinasiDetailSiswa
+import com.faiz.roomdatabase_0065.view.route.DestinasiDetailSiswa.itemIdArg
+import com.faiz.roomdatabase_0065.view.route.DestinasiEditSiswa
+import com.faiz.roomdatabase_0065.view.route.DestinasiEntry
+import com.faiz.roomdatabase_0065.view.route.DestinasiHome
 
 
 @Composable
@@ -67,4 +77,9 @@ fun HostNavigasi(
         }
 
     }
+}
+
+@Composable
+fun SiswaApp(navController: NavHostController= rememberNavController(), modifier: Modifier){
+    HostNavigasi(navController = navController)
 }
